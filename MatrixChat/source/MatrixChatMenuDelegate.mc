@@ -13,6 +13,7 @@ class MatrixChatMenuDelegate extends WatchUi.MenuInputDelegate {
     function onMenuItem(item as Symbol) as Void {
         if (item == :item_1) {
             System.println("item 1");
+            makeRequest();
         } else if (item == :item_2) {
             System.println("item 2");
         }
@@ -43,6 +44,7 @@ class MatrixChatMenuDelegate extends WatchUi.MenuInputDelegate {
     public function onReceive(responseCode as Number, data as Dictionary<String, Object?> or String or Null) as Void {
         if (responseCode == 200) {
             _notify.invoke(data);
+            System.println(data);
         } else {
             _notify.invoke("Failed to load\nError: " + responseCode.toString());
         }
